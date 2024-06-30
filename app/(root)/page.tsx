@@ -7,8 +7,9 @@ import { getLoggedInUser } from '@/lib/actions/user.actions';
 import RightSidebar from '@/components/RightSidebar';
 
 
-const Home = () => {
-  const loggedIn = { firstName: "ankush", lastName : "diwakar" , email : "work.ankush@gmail.com"}
+const Home = async () => {
+  const loggedIn =  await getLoggedInUser();
+  console.log("hi server",loggedIn)
   return (
     <section className='home'>
       <div className="home-content">
@@ -16,7 +17,7 @@ const Home = () => {
           <HeaderBox
             type="greeting"
             title="Welcome"
-            user={loggedIn?.firstName || 'Guest'}
+            user={loggedIn?.name || 'Guest'}
             subtext="Access and manage your account and transactions efficiently!"
           />
       
